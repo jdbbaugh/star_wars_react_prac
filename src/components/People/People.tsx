@@ -5,7 +5,8 @@ import { PersonType } from '../../types'
 import Person from '../Person'
 import {
   Input,
-  Container } from 'reactstrap';
+  ListGroup,
+   } from 'reactstrap';
 
 function People() {
   const [people, setPeople] = React.useState<PersonType[]>([])
@@ -24,6 +25,10 @@ function People() {
     })
  }
 
+ const setSelectedPerson = (person:string) => {
+   console.log('yeh', person)
+ }
+
   return (
     <div>
       <Input
@@ -33,8 +38,11 @@ function People() {
           updatePeople(e.target.value)
         }}
       />
-
-      {people.map(person => <Person person={person} />)}
+      <ListGroup>
+        {people.map(person => <Person
+          setSelectedPerson={setSelectedPerson}
+          person={person} />)}
+      </ListGroup>
     </div>
   )
 }
