@@ -5,9 +5,14 @@ import { PersonType } from '../../types'
 import Person from '../Person'
 import {
   Input,
-  Container } from 'reactstrap';
+  ListGroup,
+} from 'reactstrap';
 
-function People() {
+interface PeopleProps {
+  setSelectedPerson: any
+}
+
+function People({ setSelectedPerson }: PeopleProps) {
   const [people, setPeople] = React.useState<PersonType[]>([])
 
   React.useEffect(() => {
@@ -24,17 +29,22 @@ function People() {
     })
  }
 
+
+
   return (
     <div>
       <Input
-        className="search__input"
+        className="mb-3"
         placeholder={'Search Star Wars Characters'}
         onChange={ e => {
           updatePeople(e.target.value)
         }}
       />
-
-      {people.map(person => <Person person={person} />)}
+      <ListGroup>
+        {people.map(person => <Person
+          setSelectedPerson={setSelectedPerson}
+          person={person} />)}
+      </ListGroup>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 body {
+  background: black;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +11,55 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input[type=text] {
+  background-color: gray;
+}
+
+::placeholder {
+  color: black !important;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-weight: 600;
+}
+
+.people-list {
+  color: #feda4a;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 150%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  text-align: justify;
+  background: black;
+}
+
+.person-name {
+  color: #feda4a;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 220%;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 150%;
+  text-align: justify;
+  margin-top: 65px;
+  text-align: center;
+}
+
+.person-details {
+  color: #feda4a;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-weight: 500;
+  letter-spacing: 6px;
+  line-height: 150%;
+}
+
+.people-list:hover {
+  cursor: pointer;
+  color: white
+}
+
+.movie-title {
+  margin-left: 15px;
+  margin-top: 10px;
 }
