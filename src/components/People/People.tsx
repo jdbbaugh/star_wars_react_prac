@@ -6,9 +6,13 @@ import Person from '../Person'
 import {
   Input,
   ListGroup,
-   } from 'reactstrap';
+} from 'reactstrap';
 
-function People() {
+interface PeopleProps {
+  setSelectedPerson: any
+}
+
+function People({ setSelectedPerson }: PeopleProps) {
   const [people, setPeople] = React.useState<PersonType[]>([])
 
   React.useEffect(() => {
@@ -25,14 +29,12 @@ function People() {
     })
  }
 
- const setSelectedPerson = (person:string) => {
-   console.log('yeh', person)
- }
+
 
   return (
     <div>
       <Input
-        className="search__input"
+        className="mb-3"
         placeholder={'Search Star Wars Characters'}
         onChange={ e => {
           updatePeople(e.target.value)

@@ -3,6 +3,7 @@ import React from 'react'
 import { fetchJson } from '../../api'
 import { PersonType } from '../../types'
 import People from '../People'
+import PersonDetails from '../PersonDetails'
 import {
   Row,
   Col,
@@ -10,12 +11,14 @@ import {
   import './Dashboard.css';
 
 function Dashboard() {
-  // const [people, setPeople] = React.useState<PersonType[]>([])
 
-  // React.useEffect(() => {
-  //   fetchJson<{ results: PersonType[] }>('people')
-  //     .then(peopleResponse => setPeople(peopleResponse.results))
-  // }, [])
+  const [person, setPerson] = React.useState<object>({})
+
+  const setSelectedPerson = (person:object) => {
+    setPerson(person)
+  }
+
+  console.log(`person`, person)
 
   return (
     <Container
@@ -23,10 +26,13 @@ function Dashboard() {
       className='main-container'
     >
       <Row>
-        <Col className='search-list'>
-          <People />
+        <Col xs='auto' className='mt-5'>
+          <People
+            setSelectedPerson={setSelectedPerson} />
         </Col>
         <Col>
+          <PersonDetails
+              person={person} />
         </Col>
       </Row>
     </Container>

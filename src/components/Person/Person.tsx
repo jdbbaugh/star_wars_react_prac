@@ -7,7 +7,7 @@ interface PersonProps {
 }
 
 function Person({ person, setSelectedPerson }: PersonProps) {
-  return <ListGroupItem tag="a"><a onClick={() => setSelectedPerson(person)}>{person.name}</a></ListGroupItem>
+  return <ListGroupItem className="people-list" tag="a"><a onClick={() => setSelectedPerson(person)}>{person.name}</a></ListGroupItem>
 }
 
 export default Person

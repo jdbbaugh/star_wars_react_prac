@@ -2,3 +2,7 @@
 export interface PersonType {
   name: string
 }
+
+export interface FilmType {
+  name: string
+}
