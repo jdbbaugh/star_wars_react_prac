@@ -1,6 +1,7 @@
 export interface PersonType {
   name: string
-  species: [any]
+  species: any
+  films: []
 }
 
 export interface SpeciesType {

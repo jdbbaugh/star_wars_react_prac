@@ -16,14 +16,11 @@ function People({ setSelectedPerson }: PeopleProps) {
   const [people, setPeople] = React.useState<PersonType[]>([])
 
   React.useEffect(() => {
-    fetchJson<{ results: PersonType[] }>('people')
-      .then(peopleResponse => {
-        setPeople(peopleResponse.results)
-      })
+    updatePeople('people')
   }, [])
 
   const updatePeople = async (input:any) => {
-    fetchJson<{ results: PersonType[] }>(`people/?search=${input}`)
+    fetchJson<{ results: PersonType[] }>(input)
     .then(peopleResponse => {
       setPeople(peopleResponse.results)
     })
@@ -37,7 +34,7 @@ function People({ setSelectedPerson }: PeopleProps) {
         className="mb-3"
         placeholder={'Search Star Wars Characters'}
         onChange={ e => {
-          updatePeople(e.target.value)
+          updatePeople(`people/?search=${e.target.value}`)
         }}
       />
       <ListGroup>
