@@ -1,6 +1,3 @@
-import React from 'react'
-
-import { fetchJson } from '../../api'
 import { FilmType } from '../../types'
 import Person from '../Person'
 import {
@@ -11,29 +8,12 @@ import {
 const CHARACTER_TRAITS = ['birth_year:','eye_color:','gender:','hair_color:','height:','mass:' ,'skin_color:']
 
 interface PersonDetailProps {
+  filmApperances: any
+  species: any
   person: any
 }
 
-function PersonDetails({ person }: PersonDetailProps) {
-  const [people, setFilms] = React.useState<FilmType[]>([])
-
-  React.useEffect(() => {
-    fetchJson<{ results: FilmType[] }>('films')
-      .then(peopleResponse => {
-        sortFilms(peopleResponse.results)
-      })
-  }, [])
-
-//   const updat
-//  details plus films and species
-
-const sortFilms = (taco:any) => {
-  console.log(`taco`, taco)
-
-}
-
-
-
+function PersonDetails({ filmApperances, person, species }: PersonDetailProps) {
   return (
     <>
       <Row>
@@ -42,22 +22,22 @@ const sortFilms = (taco:any) => {
         </Col>
       </Row>
       <Row>
-        <Col className='offset-sm-2 mt-5'>birth_year: {person.birth_year}</Col>
-        <Col className='offset-sm-2 mt-5'>eye_color: {person.eye_color}</Col>
+        <Col className='offset-sm-2 mt-5'>Birth_year: {person.birth_year}</Col>
+        <Col className='offset-sm-2 mt-5'>Eye_color: {person.eye_color}</Col>
       </Row>
       <Row>
-        <Col className='offset-sm-2 mt-5'>gender: {person.gender}</Col>
-        <Col className='offset-sm-2 mt-5'>hair_color: {person.hair_color}</Col>
+        <Col className='offset-sm-2 mt-5'>Gender: {person.gender}</Col>
+        <Col className='offset-sm-2 mt-5'>Hair_color: {person.hair_color}</Col>
       </Row>
       <Row>
-        <Col className='offset-sm-2 mt-5'>height: {person.height}</Col>
-        <Col className='offset-sm-2 mt-5'>mass: {person.mass}</Col>
+        <Col className='offset-sm-2 mt-5'>Height: {person.height}</Col>
+        <Col className='offset-sm-2 mt-5'>Mass: {person.mass}</Col>
       </Row>
       <Row>
-        <Col className='offset-sm-2 mt-5'>species:</Col>
+        <Col className='offset-sm-2 mt-5'>Species: {species.name}</Col>
       </Row>
       <Row>
-        <Col className='offset-sm-2 mt-5'>films:</Col>
+        <Col className='offset-sm-2 mt-5'>Films: {filmApperances.map((f:any) => {return <div className='movie-title'>{f.title}: {f.release_date}</div>})}</Col>
       </Row>
     </>
   )
