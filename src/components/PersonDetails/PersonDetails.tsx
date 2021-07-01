@@ -35,7 +35,7 @@ function PersonDetails({ filmApperances, person, species }: PersonDetailProps) {
       </Row>
       <Row>
         {
-          filmApperances.length > 0 && <Col className='offset-sm-2 mt-5'>Films: {filmApperances.map((f:any) => {return <div className='movie-title'>{f.title}: {f.release_date}</div>})}</Col>
+          filmApperances.length > 0 && <Col className='offset-sm-2 mt-5'>Films: {filmApperances.map((f:any) => {return <div key={f.release_date} className='movie-title'>{f.title}: {f.release_date}</div>})}</Col>
         }
       </Row>
     </>
