@@ -6,6 +6,7 @@ import Person from '../Person'
 import {
   Input,
   ListGroup,
+  Spinner
 } from 'reactstrap';
 
 interface PeopleProps {
@@ -26,8 +27,6 @@ function People({ setPerson }: PeopleProps) {
     })
  }
 
-
-
   return (
     <div>
       <Input
@@ -37,11 +36,17 @@ function People({ setPerson }: PeopleProps) {
           updatePeople(`people/?search=${e.target.value}`)
         }}
       />
-      <ListGroup>
-        {people.map(person => <Person
-          setPerson={setPerson}
-          person={person} />)}
-      </ListGroup>
+      {people.length > 0 ?
+        <ListGroup>
+          {people.map(person => <Person
+            setPerson={setPerson}
+            person={person} />)}
+        </ListGroup>
+        :
+        <div className='spinner'>
+          <Spinner children="" type="grow" color="warning"/>
+        </div>
+      }
     </div>
   )
 }
