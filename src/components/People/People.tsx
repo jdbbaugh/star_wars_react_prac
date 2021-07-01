@@ -9,21 +9,18 @@ import {
 } from 'reactstrap';
 
 interface PeopleProps {
-  setSelectedPerson: any
+  setPerson: Function
 }
 
-function People({ setSelectedPerson }: PeopleProps) {
+function People({ setPerson }: PeopleProps) {
   const [people, setPeople] = React.useState<PersonType[]>([])
 
   React.useEffect(() => {
-    fetchJson<{ results: PersonType[] }>('people')
-      .then(peopleResponse => {
-        setPeople(peopleResponse.results)
-      })
+    updatePeople('people')
   }, [])
 
-  const updatePeople = async (input:any) => {
-    fetchJson<{ results: PersonType[] }>(`people/?search=${input}`)
+  const updatePeople = async (input:string) => {
+    fetchJson<{ results: PersonType[] }>(input)
     .then(peopleResponse => {
       setPeople(peopleResponse.results)
     })
@@ -37,12 +34,12 @@ function People({ setSelectedPerson }: PeopleProps) {
         className="mb-3"
         placeholder={'Search Star Wars Characters'}
         onChange={ e => {
-          updatePeople(e.target.value)
+          updatePeople(`people/?search=${e.target.value}`)
         }}
       />
       <ListGroup>
         {people.map(person => <Person
-          setSelectedPerson={setSelectedPerson}
+          setPerson={setPerson}
           person={person} />)}
       </ListGroup>
     </div>

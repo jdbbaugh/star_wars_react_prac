@@ -2,12 +2,16 @@ import { PersonType } from '../../types';
 import { ListGroupItem } from 'reactstrap';
 
 interface PersonProps {
-  setSelectedPerson: any
-  person: PersonType
+	setPerson: Function;
+	person: PersonType;
 }
 
-function Person({ person, setSelectedPerson }: PersonProps) {
-  return <ListGroupItem className="people-list" tag="a"><a onClick={() => setSelectedPerson(person)}>{person.name}</a></ListGroupItem>
+function Person({ person, setPerson }: PersonProps) {
+	return (
+		<ListGroupItem className="people-list">
+			<a onClick={() => setPerson(person)}>{person.name}</a>
+		</ListGroupItem>
+	);
 }
 
-export default Person
+export default Person;

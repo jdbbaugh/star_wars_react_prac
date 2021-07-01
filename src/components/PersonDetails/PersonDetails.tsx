@@ -1,16 +1,13 @@
-import { FilmType } from '../../types'
-import Person from '../Person'
+import { PersonType } from '../../types'
 import {
   Row,
   Col,
 } from 'reactstrap';
 
-const CHARACTER_TRAITS = ['birth_year:','eye_color:','gender:','hair_color:','height:','mass:' ,'skin_color:']
-
 interface PersonDetailProps {
-  filmApperances: any
-  species: any
-  person: any
+  filmApperances: Array<object>;
+  species: any;
+  person: PersonType;
 }
 
 function PersonDetails({ filmApperances, person, species }: PersonDetailProps) {
