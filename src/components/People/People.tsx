@@ -9,17 +9,17 @@ import {
 } from 'reactstrap';
 
 interface PeopleProps {
-  setSelectedPerson: any
+  setPerson: Function
 }
 
-function People({ setSelectedPerson }: PeopleProps) {
+function People({ setPerson }: PeopleProps) {
   const [people, setPeople] = React.useState<PersonType[]>([])
 
   React.useEffect(() => {
     updatePeople('people')
   }, [])
 
-  const updatePeople = async (input:any) => {
+  const updatePeople = async (input:string) => {
     fetchJson<{ results: PersonType[] }>(input)
     .then(peopleResponse => {
       setPeople(peopleResponse.results)
@@ -39,7 +39,7 @@ function People({ setSelectedPerson }: PeopleProps) {
       />
       <ListGroup>
         {people.map(person => <Person
-          setSelectedPerson={setSelectedPerson}
+          setPerson={setPerson}
           person={person} />)}
       </ListGroup>
     </div>

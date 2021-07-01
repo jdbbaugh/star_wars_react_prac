@@ -5,9 +5,10 @@ import Person from './Person'
 
 describe('<Person />', () => {
   test('should render the person\'s name', () => {
-    const person: PersonType = { name: 'Jek Tono Porkins'}
+    const person: PersonType = { name: 'Jek Tono Porkins', species: 'human', films: []}
+    const setPerson = () => {}
 
-    render(<Person person={person} />)
+    render(<Person setPerson={setPerson} person={person} />)
 
     screen.getByText(person.name)
   })
